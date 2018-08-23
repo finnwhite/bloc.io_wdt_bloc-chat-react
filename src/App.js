@@ -18,10 +18,15 @@ import * as firebase from 'firebase';
 class App extends Component {
   render() {
     return (
-      <aside>
-        <h1>Bloc Chat</h1>
-        <RoomList firebase={ firebase } />
-      </aside>
+      <div className="app">
+        <section className="main-menu">
+          <h1>Bloc Chat</h1>
+          <RoomList firebase={ firebase } />
+        </section>
+        <section className="chat-room">
+          <h2>Chat Room Name</h2>
+        </section>
+      </div>
     );
   }
 }
