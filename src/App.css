@@ -5,12 +5,16 @@
 }
 
 .app > .main-menu {
-  padding: 5px 15px;
+  padding: 9px 15px;
   width: 30%;
   background-color: #DDDDDD;
 }
 
-.app > .chat-room {
-  padding: 5px 15px;
+.app > .main-menu > header {
+  margin: 0 0 20px;
+}
+
+.app > .chat-window {
+  padding: 9px 15px;
   width: 70%;
 }

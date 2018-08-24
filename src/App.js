@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import RoomList from './components/RoomList';
-
 import './App.css';
 
-import * as firebase from 'firebase';
+import firebase from 'firebase';
+import RoomList from './components/RoomList';
+import MessageList from './components/MessageList';
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCuNcLzOua1z5YyAFiNC6qy9iR8rw5ReSw",
@@ -20,11 +21,13 @@ class App extends Component {
     return (
       <div className="app">
         <section className="main-menu">
-          <h1>Bloc Chat</h1>
+          <header>
+            <h1>Bloc Chat</h1>
+          </header>
           <RoomList firebase={ firebase } />
         </section>
-        <section className="chat-room">
-          <h2>Chat Room Name</h2>
+        <section className="chat-window">
+          <MessageList firebase={ firebase } />
         </section>
       </div>
     );

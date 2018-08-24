@@ -1,0 +1,26 @@
+.message-list > header {
+  margin: 0 0 20px;
+}
+
+.chat-message {
+  display: flex;
+  margin: 0 0 20px;
+  border: 1px solid #DDDDDD;
+}
+
+.chat-message > header {
+  padding: 4px 13px 4px 9px;
+  background-color: lightblue;
+}
+.chat-message .chat-handle {
+  font-size: 75%;
+}
+.chat-message .timestamp {
+  display: block;
+  font-size: 75%;
+}
+
+.chat-message p {
+  flex-grow: 1;
+  padding: 4px 9px 7px;
+}

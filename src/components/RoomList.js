@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import './RoomList.css';
 
 class RoomList extends Component {
@@ -15,9 +14,9 @@ class RoomList extends Component {
   }
 
   componentDidMount() {
-    this.roomsRef.on( "child_added", ( snapshot, prevChildKey ) => {
+    this.roomsRef.on( "child_added", ( snapshot ) => {
       const room = snapshot.val();
-      room.key = snapshot.key;
+      room.__key = snapshot.key;
       this.setState({ rooms: this.state.rooms.concat( room ) });
     } );
   }
@@ -43,7 +42,7 @@ class RoomList extends Component {
         <ul>
           { this.state.rooms.map( ( room, index ) => {
             return (
-              <li key={ room.key }>{ room.name }</li>
+              <li key={ room.__key }>{ room.name }</li>
             );
           } ) }
         </ul>
