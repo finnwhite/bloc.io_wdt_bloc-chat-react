@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './RoomList.css';
 
+import MenuOption from './MenuOption';
+
 class RoomList extends Component {
   constructor( props ) {
     super( props );
@@ -21,6 +23,10 @@ class RoomList extends Component {
     } );
   }
 
+  handleMenuSelect( e ) {
+    this.props.handleSelectRoom( { room: e.value } );
+  }
+
   handleCreateRoomChange( e ) {
     this.setState({ newRoomName: e.target.value });
   }
@@ -37,12 +43,23 @@ class RoomList extends Component {
   }
 
   render() {
+    const room = this.props.activeRoom;
+    const key = (room) ? room.__key : null;
+
     return (
       <div className="room-list">
-        <ul>
+        <ul className="chat-rooms">
           { this.state.rooms.map( ( room, index ) => {
             return (
-              <li key={ room.__key }>{ room.name }</li>
+              <li key={ index }>
+                <MenuOption
+                  icon="chat"
+                  label={ room.name }
+                  value={ room }
+                  isSelected={ ( room.__key === key ) }
+                  handleSelect={ ( e ) => this.handleMenuSelect( e ) }
+                />
+              </li>
             );
           } ) }
         </ul>

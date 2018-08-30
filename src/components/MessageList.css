@@ -2,6 +2,11 @@
   margin: 0 0 20px;
 }
 
+.message-list > header i {
+  margin-right: 0.3em;
+  vertical-align: text-bottom;
+}
+
 .chat-message {
   display: flex;
   margin: 0 0 20px;

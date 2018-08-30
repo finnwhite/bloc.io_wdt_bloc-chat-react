@@ -17,6 +17,19 @@ import MessageList from './components/MessageList';
   firebase.initializeApp(config);
 
 class App extends Component {
+  constructor( props ) {
+    super( props );
+    this.state = { activeRoom: null };
+  }
+
+  selectRoom( e ) {
+    const prev = this.state.activeRoom;
+    const next = e.room;
+    if ( !prev || ( next.__key !== prev.__key ) ) {
+      this.setState( { activeRoom: next } );
+    }
+  }
+
   render() {
     return (
       <div className="app">
@@ -24,10 +37,17 @@ class App extends Component {
           <header>
             <h1>Bloc Chat</h1>
           </header>
-          <RoomList firebase={ firebase } />
+          <RoomList
+            firebase={ firebase }
+            activeRoom={ this.state.activeRoom }
+            handleSelectRoom={ ( e ) => this.selectRoom( e ) }
+          />
         </section>
         <section className="chat-window">
-          <MessageList firebase={ firebase } />
+          <MessageList
+            firebase={ firebase }
+            activeRoom={ this.state.activeRoom }
+          />
         </section>
       </div>
     );

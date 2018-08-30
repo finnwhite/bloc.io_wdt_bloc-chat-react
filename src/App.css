@@ -4,6 +4,10 @@
   height: 100%;
 }
 
+.app .nodata {
+  color: #666666;
+}
+
 .app > .main-menu {
   padding: 9px 15px;
   width: 30%;

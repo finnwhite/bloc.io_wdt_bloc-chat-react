@@ -1,0 +1,26 @@
+.menu-option {
+  display: flex;
+  cursor: pointer;
+}
+
+.menu-option:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.menu-option-selected {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.menu-option-label {
+  flex-grow: 1;
+}
+
+.menu-option-label i {
+  margin-right: 0.3em;
+  vertical-align: text-bottom;
+}
+
+.menu-option-actions {
+  display: none;
+}
