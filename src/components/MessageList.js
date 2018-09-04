@@ -6,7 +6,8 @@ class MessageList extends Component {
     super( props );
 
     this.state = {
-      messages: []
+      messages: [],
+      newMessage: ""
     };
 
     this.messagesRef = this.props.firebase.database().ref( "messages" );
@@ -18,6 +19,30 @@ class MessageList extends Component {
       msg.__key = snapshot.key;
       this.setState({ messages: this.state.messages.concat( msg ) });
     } );
+  }
+
+  handleCreateMessageChange( e ) {
+    this.setState({ newMessage: e.target.value });
+  }
+  handleCreateMessageSubmit( e ) {
+    e.preventDefault();
+    const msg = this.state.newMessage;
+    if ( !msg || !this.props.activeRoom ) { return }
+    this.createMessage( msg );
+    this.setState({ newMessage: "" });
+  }
+  createMessage( content ) {
+    const room = this.props.activeRoom;
+    const roomId = (room) ? room.__key : null;
+    const user = this.props.user;
+    const msg = {
+      uid: user.uid,
+      username: user.displayName,
+      content: content,
+      sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+      roomId: roomId
+    };
+    this.messagesRef.push( msg );
   }
 
   renderTimestamp( dateValue ) {
@@ -65,6 +90,26 @@ class MessageList extends Component {
             <p className="nodata">No messages to display.</p>
           }
         </section>
+        <footer>
+          <form
+            id="createMessage"
+            action=""
+            method="POST"
+            onSubmit={ (e) => this.handleCreateMessageSubmit(e) }
+          >
+            <label
+              htmlFor="createMessage_content"
+              className="labeltext-left"
+              >Message:</label>
+            <input type="text"
+              id="createMessage_content"
+              name="content"
+              value={ this.state.newMessage }
+              onChange={ (e) => this.handleCreateMessageChange(e) }
+            />
+            <button type="submit">Send</button>
+          </form>
+        </footer>
       </div>
     );
   }

@@ -1,12 +1,31 @@
 .app {
+  --margin-x: 0.75em;
+  --margin-y: 0.75em;
+  --spacing-x: 0.5em;
+  --spacing-y: 1em;
+
+  --border-light: 1px solid #DDDDDD;
+  --border-dark: 1px solid #999999;
+
   display: flex;
   width: 100%;
   height: 100%;
 }
 
-.app .nodata {
-  color: #666666;
+/* --- app global classes --- */
+
+.app .labeltext-left {
+  margin-right: 0.3em;
 }
+.app .labeltext-right {
+  margin-left: 0.3em;
+}
+
+.app .nodata {
+  color: #999999;
+}
+
+/* --- app main menu --- */
 
 .app > .main-menu {
   padding: 9px 15px;
@@ -18,7 +37,10 @@
   margin: 0 0 20px;
 }
 
+/* --- app chat window --- */
+
 .app > .chat-window {
-  padding: 9px 15px;
   width: 70%;
+  box-shadow: 0 0 var(--margin-x) 0 rgba(0,0,0,0.25);
+  border-left: var(--border-dark);
 }

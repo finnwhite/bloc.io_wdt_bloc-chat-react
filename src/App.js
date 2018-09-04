@@ -93,6 +93,7 @@ class App extends Component {
         <section className="chat-window">
           <MessageList
             firebase={ firebase }
+            user={ user }
             activeRoom={ this.state.activeRoom }
           />
         </section>

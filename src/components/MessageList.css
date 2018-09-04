@@ -1,5 +1,19 @@
+.message-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* --- MessageList header --- */
+
 .message-list > header {
-  margin: 0 0 20px;
+  padding: var(--margin-y) var(--margin-x);
+  /* border-bottom: var(--border-light); */
+}
+
+.message-list > header h2,
+.message-list > header p {
+  font-size: 1.5em;
 }
 
 .message-list > header i {
@@ -7,10 +21,20 @@
   vertical-align: text-bottom;
 }
 
+/* --- MessageList chat-message-list --- */
+
+.chat-message-list {
+  flex-grow: 1;
+  overflow: auto;
+  padding: var(--margin-y) var(--margin-x);
+}
+
+/* --- MessageList chat-message --- */
+
 .chat-message {
   display: flex;
-  margin: 0 0 20px;
-  border: 1px solid #DDDDDD;
+  margin: 0 0 var(--spacing-y);
+  border: var(--border-light);
 }
 
 .chat-message > header {
@@ -28,4 +52,38 @@
 .chat-message p {
   flex-grow: 1;
   padding: 4px 9px 7px;
+}
+
+/* --- MessageList footer --- */
+
+.message-list > footer {
+  border-top: var(--border-dark);
+  background-color: lightblue; 
+}
+
+#createMessage {
+  display: flex;
+  padding-left: var(--margin-x);
+}
+
+#createMessage > label,
+#createMessage > input {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+#createMessage_content {
+  flex-grow: 1;
+  margin-right: var(--spacing-x);
+  padding: 0.3em 0.15em;
+  border: var(--border-dark);
+}
+
+#createMessage > button {
+  padding: 0 1em;
+  border: none;
+  border-left: var(--border-dark);
+  font: inherit;
+  font-size: 75%;
+  cursor: pointer;
 }
